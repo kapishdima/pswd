@@ -4,6 +4,7 @@
   "version": "0.0.2",
   "type": "module",
   "main": "main.js",
+  "description": "Password manager",
   "scripts": {
     "dev:app": "nodemon --watch ./main.js --exec 'electron .'",
     "dev": "vite",
