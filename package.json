@@ -5,6 +5,7 @@
   "type": "module",
   "main": "main.js",
   "description": "Password manager",
+  "license": "MIT" ,
   "scripts": {
     "dev:app": "nodemon --watch ./main.js --exec 'electron .'",
     "dev": "vite",
