@@ -1,9 +1,22 @@
 import { defineConfig } from "vite";
-import { fileURLToPath, URL } from "url";
 import vue from "@vitejs/plugin-vue";
+import { fileURLToPath } from "url";
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  clearScreen: false,
+  server: {
+    port: 8082,
+    strictPort: true,
+  },
+  envPrefix: [
+    "VITE_",
+    "TAURI_PLATFORM",
+    "TAURI_ARCH",
+    "TAURI_FAMILY",
+    "TAURI_PLATFORM_VERSION",
+    "TAURI_PLATFORM_TYPE",
+    "TAURI_DEBUG",
+  ],
   resolve: {
     alias: [
       {
@@ -12,8 +25,11 @@ export default defineConfig({
       },
     ],
   },
-  server: {
-    port: parseInt(process.env.DEV_PORT || "8083"),
+  build: {
+    target: process.env.TAURI_PLATFORM == "windows" ? "chrome105" : "safari13",
+    minify: !process.env.TAURI_DEBUG ? "esbuild" : false,
+    sourcemap: !!process.env.TAURI_DEBUG,
+    outDir: "../dist",
   },
   plugins: [vue()],
 });

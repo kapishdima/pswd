@@ -18,7 +18,7 @@ import { cs } from "./classes";
 import { Variants } from "./types";
 
 type ButtonProps = {
-  classes: string;
+  classes?: string;
   text: string;
   variant?: Variants;
 };
